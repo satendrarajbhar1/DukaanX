@@ -15,13 +15,27 @@ const app = express();
 app.set("trust proxy", 1);
 app.use(helmet());
 
-const allowedOrigins = (
-  process.env.CLIENT_URLS || "http://localhost:5173,http://localhost:5174"
-).split(",");
+const defaultOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://dukaan-x.vercel.app",
+  "https://dukaan-x-1poh.vercel.app",
+];
+
+// CLIENT_URLS set ho to wahi use hoga, warna defaultOrigins
+const allowedOrigins = process.env.CLIENT_URLS
+  ? process.env.CLIENT_URLS.split(",").map((url) => url.trim().replace(/\/$/, ""))
+  : defaultOrigins;
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      // Postman/server-to-server requests mein origin nahi hota
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error(`CORS blocked: ${origin}`));
+    },
     credentials: true,
   })
 );
