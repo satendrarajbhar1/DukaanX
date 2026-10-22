@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "",
@@ -21,10 +22,8 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.7.4",
     "multer": "^2.2.0",
-    "nodemailer": "^9.0.3",
     "nodemon": "^3.1.14",
     "razorpay": "^2.9.8",
-    "react-toastify": "^11.1.0",
     "validator": "^13.15.35"
   }
 }
