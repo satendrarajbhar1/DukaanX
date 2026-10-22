@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import About from "./pages/About";
 import Collection from "./pages/Collection";
 import Contact from "./pages/Contact";
-import Cart from "./pages/cart";
+import Cart from "./pages/Cart"
 
 import ProductDetails from "./component/ProductDetail";
 import Checkout from "./component/Checkout";
