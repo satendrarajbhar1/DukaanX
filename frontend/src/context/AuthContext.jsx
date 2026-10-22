@@ -4,8 +4,7 @@ import axios from "axios";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-
+  const serverUrl = import.meta.env.DEV ? "http://localhost:8000" : "";
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);

@@ -5,7 +5,7 @@ import { useAuth } from "./context/AuthContext";
 import Nav from "./component/Nav";
 
 import Home from "./pages/Home";
-import Registration from "./pages/Register";
+
 import Login from "./pages/Login";
 import About from "./pages/About";
 import Collection from "./pages/Collection";
@@ -16,6 +16,7 @@ import ProductDetails from "./component/ProductDetail";
 import Checkout from "./component/Checkout";
 import MyOrders from "./component/MyOrders";
 import ForgotPassword from "./pages/ForgotPassword";
+import Register from "./pages/Register";
 
 function NotFound() {
   return (
@@ -89,7 +90,7 @@ function App() {
         <Route
           path="/signup"
           element={
-            isAuthenticated ? <Navigate to={from} replace /> : <Registration />
+            isAuthenticated ? <Navigate to={from} replace /> : <Register />
           }
         />
 
