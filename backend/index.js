@@ -30,7 +30,7 @@ const allowedOrigins = process.env.CLIENT_URLS
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Postman/server-to-server requests mein origin nahi hota
+      // Postman/server-to-server/UptimeRobot requests mein origin nahi hota
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
@@ -54,11 +54,16 @@ app.get("/", (req, res) => {
   res.send("Backend running");
 });
 
+
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 // global error handler (multer errors etc.)
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 400).json({
-    success: false,
+  success: false,
     message: err.message || "Something went wrong",
   });
 });
